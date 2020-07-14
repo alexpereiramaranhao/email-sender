@@ -11,6 +11,6 @@ To provide greater security, the variables:
 3. spring.mail.username
 4. spring.mail.password
 
-They are declared in environment variables, following the Spring pattern: `spring.mail.host`, fica `SPRING_MAIL_HOST`
+They are declared in environment variables, following the Spring pattern: `spring.mail.host`, to `SPRING_MAIL_HOST`
 
 
