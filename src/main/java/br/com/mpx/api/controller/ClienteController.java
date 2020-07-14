@@ -24,9 +24,9 @@ public class ClienteController {
 		
 		Mensagem mensagem = Mensagem.builder()
 				.assunto("Bem-vindo")
-				.corpo("template-email.html")
+				.corpo("template-email-thymeleaf.html")
 				.variavel("cliente", cliente)
-				.destinatario("alexpereira365@gmail.com")
+				.destinatario("alexmaranhao@saneago.com.br")
 				.build();
 		
 		envioEmail.enviar(mensagem);

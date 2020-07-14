@@ -12,16 +12,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @Component
-@ConfigurationProperties(prefix = "saneago.email")
+@ConfigurationProperties(prefix = "mpx.email")
 public class EmailProperties {
 	
 	private Implementacao implementacao = Implementacao.TESTES;
 	
+	/**
+	 * E-mail do remetente da mensagem
+	 */	
 	@NonNull
 	private String remetente;
-	
-	private String nome;
-	
+
+	/**
+   * Tipo de envio de email
+   * 
+   * {@link Implementacao}
+   */
 	private EmailTeste teste = new EmailTeste();	
 	
 	public enum Implementacao{
