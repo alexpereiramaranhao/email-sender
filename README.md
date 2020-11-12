@@ -1,16 +1,20 @@
 # E-mail sender
 
-Example of sending email using Spring Profiles, to, in progress, not forward a message to the real customer, but to a test address.
+Exemplo de envio de e-mail utilizando Spring com o Template processor Thymeleaf.
+No projeto é aplicado conceitos do Spring Profiles, para controlar o destinatário do email de acordo com os ambientes definidos.
 
-## Configuration
+## Configuração
 
-To provide greater security, the variables:
+Properties necessárias:
 
-1. spring.mail.host
-2. spring.mail.properties.mail.smtp.ssl.trust
-3. spring.mail.username
-4. spring.mail.password
+1. `spring.mail.host` o endereço do email server;
+3. `spring.mail.username` usuário da conta remetente, quem vai enviar o e-mail.
+4. `spring.mail.password` senha da conta remetente.
 
-They are declared in environment variables, following the Spring pattern: `spring.mail.host`, to `SPRING_MAIL_HOST`
+### Propriedades customizadas
+
+1. `mpx.email.implementacao` tipo de implementação do envio de email, `testes` voce especifica o destinatário em `mpx.email.teste.destinatario` no arquivo `application.properties` e `producao` especificado em `application-prod.properties`
+2. `mpx.email.remetente` mesmo usuário de `spring.mail.username`
+3. `mpx.email.teste.destinatario` usuário destinatário de testes
 
 
