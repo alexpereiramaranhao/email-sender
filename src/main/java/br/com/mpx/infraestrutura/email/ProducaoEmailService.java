@@ -6,14 +6,10 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-
 import br.com.mpx.core.email.EmailProperties;
 import br.com.mpx.dominio.service.EmailService;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
 public class ProducaoEmailService implements EmailService {
 
@@ -22,12 +18,9 @@ public class ProducaoEmailService implements EmailService {
 
 	@Autowired
 	private EmailProperties emailProperties;
-
-	@Autowired
-	private Configuration fremarkerConfiguration;
 	
 	@Autowired
-	private SpringTemplateEngine templateEngine;
+  private SpringTemplateEngine templateEngine;
 
 	@Override
 	public void enviar(Mensagem mensagem) {
@@ -58,20 +51,6 @@ public class ProducaoEmailService implements EmailService {
 
 		} catch (Exception e) {
 			throw new EmailException("Não foi possível enviar e-mail", e);
-		}
-
-	}
-
-	protected String processarMensagem(Mensagem mensagem) {
-
-		try {
-			Template template = fremarkerConfiguration.getTemplate(mensagem.getCorpo());
-
-			System.out.println(">>>>>> " + mensagem.getVariaveis().get("cliente"));
-			return FreeMarkerTemplateUtils.processTemplateIntoString(template, mensagem.getVariaveis());
-
-		} catch (Exception e) {
-			throw new EmailException("Não foi possível montar o template do e-mail", e);
 		}
 
 	}
